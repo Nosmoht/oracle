@@ -1,7 +1,7 @@
 /*******************************************************************************
 * Defines
 *******************************************************************************/
-DEFINE DATA_TBS = "ADMIN"
-DEFINE INDEX_TBS = "ADMIN"
+DEFINE DATA_TBS = "USERS"
+DEFINE INDEX_TBS = "USERS"
 
 WHENEVER SQLERROR EXIT FAILURE ROLLBACK
