@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE PACKAGE log_admin IS
+CREATE OR REPLACE PACKAGE log_admin IS
   /*****************************************************************************
   * Log Admin
   *

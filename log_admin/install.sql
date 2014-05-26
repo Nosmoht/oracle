@@ -8,7 +8,7 @@ SPOOL install.log
 @config.sql
 @@install/log_severity.sql
 @@install/log_entry.sql
-@@install/log_entires.sql
+@@install/log_entries.sql
 @@install/log_admin.sql
 @@install/context.sql
 
