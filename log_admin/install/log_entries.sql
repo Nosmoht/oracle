@@ -8,4 +8,5 @@ AS
           L.MODULE_ACTION,
           L.SQL_CODE,
           l.sql_errm
-     FROM log$entry l JOIN log$severity s ON (s.id = l.log_severity_id)
+     FROM log$entry l JOIN log$severity s ON (s.id = l.log_severity_id);
+
