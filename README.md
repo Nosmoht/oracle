@@ -1,4 +1,4 @@
-Oracle PL/SQL Modules created by NTbc
+Oracle PL/SQL Modules 
 
 Repository contains some usefull PL/SQL Package.
 1. Module_Admin: Store and retrive configuration values used by other modules
