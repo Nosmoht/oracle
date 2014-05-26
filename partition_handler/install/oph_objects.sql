@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW OPH_OBJECT
+CREATE OR REPLACE VIEW OPH_OBJECTS
 AS
      SELECT o.id AS object_id,
             o.enabled,
