@@ -3,12 +3,12 @@ CREATE OR REPLACE PACKAGE log_admin IS
   * Log Admin
   *
   * Author:        Thomas Krahn
-  * Date:          2014-01-24
-  * Version:       1.2.4
+  * Date:          2014-05-26
+  * Version:       1.2.5
   *
   * Requires:      module_admin v0.7.0
   *****************************************************************************/
-  gc_module_version CONSTANT module_admin.t_module_version := '1.2.4';
+  gc_module_version CONSTANT module_admin.t_module_version := '1.2.5';
   gc_module_label   CONSTANT module_admin.t_module_label := $$PLSQL_UNIT || ' v' || gc_module_version;
 
   /*******************************************************************************
@@ -18,14 +18,14 @@ CREATE OR REPLACE PACKAGE log_admin IS
   SUBTYPE maxvarchar IS VARCHAR2(32767 CHAR);
   SUBTYPE t_log_severity_id IS log_severity.id%TYPE;
   SUBTYPE t_log_severity_name IS log_severity.name%TYPE;
-  SUBTYPE t_insert_ts IS log_entry.insert_ts%TYPE;
-  SUBTYPE t_module_name IS log_entry.module_name%TYPE;
-  SUBTYPE t_module_action IS log_entry.module_action%TYPE;
-  SUBTYPE t_message_text IS log_entry.message%TYPE;
-  SUBTYPE t_message_lob IS log_entry.message_lob%TYPE;
-  SUBTYPE t_sql_errm IS log_entry.sql_errm%TYPE;
-  SUBTYPE t_sql_code IS log_entry.sql_code%TYPE;
-  SUBTYPE t_username IS log_entry.username%TYPE;
+  SUBTYPE t_insert_ts IS log$entry.insert_ts%TYPE;
+  SUBTYPE t_module_name IS log$entry.module_name%TYPE;
+  SUBTYPE t_module_action IS log$entry.module_action%TYPE;
+  SUBTYPE t_message_text IS log$entry.message%TYPE;
+  SUBTYPE t_message_lob IS log$entry.message_lob%TYPE;
+  SUBTYPE t_sql_errm IS log$entry.sql_errm%TYPE;
+  SUBTYPE t_sql_code IS log$entry.sql_code%TYPE;
+  SUBTYPE t_username IS log$entry.username%TYPE;
 
   /*******************************************************************************
   * Constants
@@ -139,14 +139,14 @@ CREATE OR REPLACE PACKAGE log_admin IS
                   autonom_in       IN PLS_INTEGER DEFAULT 1);
 
   /******************************************************************************
-  * Truncate the table LOG_ENTRY
+  * Truncate the table log$entry
   ******************************************************************************/
   PROCEDURE truncate_log_entry;
 END log_admin;
 /
 CREATE OR REPLACE PACKAGE BODY log_admin IS
   /******************************************************************************
-  * Insert a row into table LOG_ENTRY
+  * Insert a row into table log$entry
   ******************************************************************************/
   PROCEDURE do_write(insert_ts_in       IN t_insert_ts,
                      log_severity_id_in IN t_log_severity_id,
@@ -158,10 +158,10 @@ CREATE OR REPLACE PACKAGE BODY log_admin IS
                      sql_errm_in        IN t_sql_errm,
                      sql_code_in        IN t_sql_code) AS
   BEGIN
-    INSERT INTO log_entry
+    INSERT INTO log$entry
       (id, log_severity_id, insert_ts, username, message, module_name, module_action, sql_errm, sql_code, message_lob)
     VALUES
-      (log_entry_id_seq.nextval,
+      (log$entry_id_seq.nextval,
        log_severity_id_in,
        insert_ts_in,
        username_in,
@@ -437,16 +437,16 @@ CREATE OR REPLACE PACKAGE BODY log_admin IS
   END debug;
 
   /*******************************************************************************
-  * Truncate table LOG_ENTRY
+  * Truncate table log$entry
   *******************************************************************************/
   PROCEDURE truncate_log_entry IS
   BEGIN
-    EXECUTE IMMEDIATE 'TRUNCATE TABLE LOG_ENTRY';
+    EXECUTE IMMEDIATE 'TRUNCATE TABLE log$entry';
   EXCEPTION
     WHEN OTHERS THEN
-      error('Error while truncating LOG_ENTRY: ' || dbms_utility.format_error_backtrace,
+      error('Error while truncating log$entry: ' || dbms_utility.format_error_backtrace,
             module_name_in => $$PLSQL_UNIT,
-            module_action_in => 'truncate_log_entry',
+            module_action_in => 'truncate_log$entry',
             sql_errm_in => SQLERRM,
             sql_code_in => SQLCODE);
       RAISE;
