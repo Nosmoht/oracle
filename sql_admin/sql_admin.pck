@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE PACKAGE sql_admin IS
+CREATE OR REPLACE PACKAGE sql_admin IS
   /****************************************************************************
   * SQL Admin
   *
