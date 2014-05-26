@@ -19,7 +19,7 @@ SPOOL install.log
 @@install/oph_config.sql
 @@install/oph_tools.sql
 @@install/oph_redefine.sql
-@@install/oph_handler.sql
+@@install/oph.sql
 @@install/context.sql
 
 SPOOL OFF
