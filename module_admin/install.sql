@@ -2,7 +2,7 @@ SET ECHO ON
 SET FEEDBACK ON
 SET TIMING ON
 
-SPOOL module_admin.log
+SPOOL install.log
 @config.sql
 @module.sql
 @module_config.sql
