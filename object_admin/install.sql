@@ -5,7 +5,8 @@ SET TIMING ON
 
 SPOOL install.log
 
-@@install/object_admin.pck
+@config.sql
+@@install/object_admin.sql
 @@install/context.sql
 
 SPOOL OFF

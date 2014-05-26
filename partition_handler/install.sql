@@ -5,6 +5,7 @@ SET TIMING ON
 
 SPOOL install.log
 
+@@config.sql
 @@oph_constants.spc
 @@oph_types.spc
 @@oph$tech.sql
