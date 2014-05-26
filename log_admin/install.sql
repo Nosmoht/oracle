@@ -5,9 +5,9 @@ SET TIMING ON
 
 SPOOL install.log
 
-@@log_severity.sql
-@@log_entry.sql
-@@log_admin.pck
-@@context.sql
+@@install/log_severity.sql
+@@install/log_entry.sql
+@@install/log_admin.pck
+@@install/context.sql
 
 SPOOL OFF

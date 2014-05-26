@@ -3,10 +3,10 @@ SET FEEDBACK ON
 SET TIMING ON
 
 SPOOL install.log
-@@module.sql
-@@module_config.sql
-@@module_admin.pck
-@@context.sql
-@@configuration.sql
+@@install/module.sql
+@@install/module_config.sql
+@@install/module_admin.pck
+@@install/context.sql
+@@install/configuration.sql
 
 SPOOL OFF

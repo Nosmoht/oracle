@@ -5,7 +5,7 @@ SET TIMING ON
 
 SPOOL install.log
 
-@@sql_admin.pck
-@@context.sql
+@@install/sql_admin.pck
+@@install/context.sql
 
 SPOOL OFF
