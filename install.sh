@@ -4,6 +4,15 @@
 #
 # Example: install.sh localhost ORA12C 1521 testuser passwort
 ################################################################################
+#set -x
+
+usage() {
+	echo -e "Execute: $0 <DB_HOST_NAME> <DB_SERVICE_NAME> <DB_PORT> <USER_NAME> <USER_PASS>\n"
+	exit 1
+}
+
+[[ $# -ne 5 ]] && usage
+
 DB_HOST_NAME=$1
 DB_SERVICE_NAME=$2
 DB_PORT=$3
