@@ -12,3 +12,5 @@ SPOOL install.log
 @@install/configuration.sql
 
 SPOOL OFF
+
+QUIT

@@ -5,21 +5,23 @@ SET TIMING ON
 
 SPOOL install.log
 
-@@config.sql
-@@oph_constants.spc
-@@oph_types.spc
-@@oph$tech.sql
-@@oph$obj_type.sql
-@@oph$obj.sql
-@@oph$log.sql
-@@oph$key_type.sql
-@@oph$key.sql
-@@oph$def.sql
-@@oph_objects.sql
-@@oph_config.sql
-@@oph_tools.sql
-@@oph_redefine.sql
-@@oph_handler.sql
-@@context.sql
+@@install/config.sql
+@@install/oph_constants.spc
+@@install/oph_types.spc
+@@install/oph$tech.sql
+@@install/oph$obj_type.sql
+@@install/oph$obj.sql
+@@install/oph$log.sql
+@@install/oph$key_type.sql
+@@install/oph$key.sql
+@@install/oph$def.sql
+@@install/oph_objects.sql
+@@install/oph_config.sql
+@@install/oph_tools.sql
+@@install/oph_redefine.sql
+@@install/oph_handler.sql
+@@install/context.sql
 
 SPOOL OFF
+
+QUIT

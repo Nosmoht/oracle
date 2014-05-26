@@ -10,3 +10,5 @@ SPOOL install.log
 @@install/context.sql
 
 SPOOL OFF
+
+QUIT
