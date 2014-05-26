@@ -8,8 +8,8 @@ CREATE OR REPLACE PACKAGE log_admin IS
   *
   * Requires:      module_admin v0.7.0
   *****************************************************************************/
-  gc_module_version CONSTANT module_t_module_version := '1.2.4';
-  gc_module_label   CONSTANT module_t_module_label := $$PLSQL_UNIT || ' v' || gc_module_version;
+  gc_module_version CONSTANT module_admin.t_module_version := '1.2.4';
+  gc_module_label   CONSTANT module_admin.t_module_label := $$PLSQL_UNIT || ' v' || gc_module_version;
 
   /*******************************************************************************
   * Types
@@ -206,7 +206,7 @@ CREATE OR REPLACE PACKAGE BODY log_admin IS
   END write_autonom;
 
   /******************************************************************************
-  * Write a log message. This procedure is the one used by all type specific 
+  * Write a log message. This procedure is the one used by all type specific
   * procedures.
   ******************************************************************************/
   PROCEDURE write_log(insert_ts_in       IN t_insert_ts,
@@ -227,7 +227,7 @@ CREATE OR REPLACE PACKAGE BODY log_admin IS
     ELSE
       v_message := message_in;
     END IF;
-    IF log_severity_id_in <= nvl(module_get_module_value(module_name_in => module_name_in, parameter_in => gc_log_severity_attribute), gc_debug_id) THEN
+    IF log_severity_id_in <= nvl(module_admin.get_module_value(module_name_in => module_name_in, parameter_in => gc_log_severity_attribute), gc_debug_id) THEN
       IF autonom_in = 1 THEN
         write_autonom(insert_ts_in       => insert_ts_in,
                       log_severity_id_in => log_severity_id_in,
@@ -458,7 +458,7 @@ CREATE OR REPLACE PACKAGE BODY log_admin IS
   PROCEDURE initialize IS
     v_module_action t_module_action := 'initialize';
   BEGIN
-    module_load_and_set_config(module_name_in => $$PLSQL_UNIT);
+    module_admin.load_and_set_config(module_name_in => $$PLSQL_UNIT);
     info(message_in => 'Initialized ' || gc_module_label, module_name_in => $$PLSQL_UNIT, module_action_in => v_module_action);
   END initialize;
 
