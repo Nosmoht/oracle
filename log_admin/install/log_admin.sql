@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE log_admin IS
+﻿CREATE OR REPLACE PACKAGE log_admin IS
   /*****************************************************************************
   * Log Admin
   *
@@ -16,8 +16,8 @@ CREATE OR REPLACE PACKAGE log_admin IS
   *******************************************************************************/
   SUBTYPE maxvarchardb IS VARCHAR2(4000 CHAR);
   SUBTYPE maxvarchar IS VARCHAR2(32767 CHAR);
-  SUBTYPE t_log_severity_id IS log_severity.id%TYPE;
-  SUBTYPE t_log_severity_name IS log_severity.name%TYPE;
+  SUBTYPE t_log_severity_id IS log$severity.id%TYPE;
+  SUBTYPE t_log_severity_name IS log$severity.name%TYPE;
   SUBTYPE t_insert_ts IS log$entry.insert_ts%TYPE;
   SUBTYPE t_module_name IS log$entry.module_name%TYPE;
   SUBTYPE t_module_action IS log$entry.module_action%TYPE;
