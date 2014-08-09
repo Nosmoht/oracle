@@ -21,6 +21,7 @@ SPOOL install.log
 @@install/oph_redefine.sql
 @@install/oph.sql
 @@install/context.sql
+@@install/oph_tables.sql
 
 SPOOL OFF
 
