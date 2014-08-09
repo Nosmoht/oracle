@@ -5,9 +5,9 @@ SET TIMING ON
 
 SPOOL install.log
 
-@@install/config.sql
-@@install/oph_constants.spc
-@@install/oph_types.spc
+@@config.sql
+@@install/oph_constants.sql
+@@install/oph_types.sql
 @@install/oph_tech.sql
 @@install/oph_obj_type.sql
 @@install/oph_obj.sql
