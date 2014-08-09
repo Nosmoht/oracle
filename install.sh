@@ -18,8 +18,10 @@ DB_SERVICE_NAME=$2
 DB_PORT=$3
 USER_NAME=$4
 USER_PASS=$5
+
 DATA_TBS="USERS"
 INDEX_TBS="USERS"
+LOG_FILE="install.log"
 
 sqlplus / as sysdba << EOSQL
 	SET ECHO ON
@@ -27,6 +29,8 @@ sqlplus / as sysdba << EOSQL
 	DROP USER ${USER_NAME} CASCADE;
 	
 	WHENEVER SQLERROR EXIT SQL.SQLCODE
+
+	SPOOL ${LOG_FILE}
 
 	CREATE USER ${USER_NAME} IDENTIFIED BY "${USER_PASS}"
 		ACCOUNT UNLOCK
@@ -53,12 +57,14 @@ sqlplus / as sysdba << EOSQL
 
 	GRANT EXECUTE ON SYS.get_object_ddl TO ${USER_NAME};
 	GRANT EXECUTE ON SYS.dbms_redefinition TO ${USER_NAME};
+
+	@@module_admin/install.sql
+	@@log_admin/install.sql
+	@@sql_admin/install.sql
+	@@object_admin/install.sql
+	@@partition_handler/install.sql
+
+	SPOOL OFF
 EOSQL
 
-[[ $? -ne 0 ]] && exit 1
-
-for m in module_admin log_admin sql_admin object_admin partition_handler; do
-	cd $m
-	sqlplus ${USER_NAME}/${USER_PASS}@//${DB_HOST_NAME}:${DB_PORT}/${DB_SERVICE_NAME} @install.sql
-	cd ..
-done
+exit $?
